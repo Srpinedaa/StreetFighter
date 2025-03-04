@@ -2,12 +2,6 @@ let bisonEscena = [
     { x: 0, y: 0, width: 474, height: 224 },
     { x: 474, y: 0, width: 474, height: 224 },
     { x: 948, y: 0, width: 474, height: 224 },
-    { x: 1422, y: 0, width: 474, height: 224 },
-    { x: 1896, y: 0, width: 474, height: 224 },
-    { x: 2370, y: 0, width: 474, height: 224 },
-    { x: 2844, y: 0, width: 474, height: 224 },
-    { x: 3318, y: 0, width: 474, height: 224 },
-    { x: 3792, y: 0, width: 474, height: 224 },
 ]
 let bisonReady = [
     { x: 1, y: 31, width: 108, height: 96 },

@@ -116,9 +116,9 @@ function mostrarContador(imgDecoraciones) {
 
 
     ctx.drawImage(spriteDecoraciones, spritX_1rcontador, 32,
-        14, 15, 178, 34, 14, 15);
+        14, 15, 173, 34, 14, 15);
     ctx.drawImage(spriteDecoraciones, spritX_2ocontador, 32,
-        14, 15, 193, 34, 14, 15);
+        14, 15, 188, 34, 14, 15);
 
 }
 
@@ -135,7 +135,7 @@ let player1 = function (x, y, width, height, img, imgDecoraciones) {
     this.imgDecoraciones = imgDecoraciones;
     this.frameDelay = 5;
     this.frameContador = 0;
-
+    this.tamanybarra = 0;
 
 
     this.dibuja = function () {
@@ -223,8 +223,7 @@ let player1 = function (x, y, width, height, img, imgDecoraciones) {
     }
 
     this.levantarse = function () {
-        this.height = this.height * 2;
-        this.y = canvas.height - this.height;
+        this.animacion();
         this.dibuja();
     }
 
@@ -233,7 +232,10 @@ let player1 = function (x, y, width, height, img, imgDecoraciones) {
         spriteDecoraciones.src = this.imgDecoraciones;
         //Barra
         ctx.drawImage(spriteDecoraciones, 16, 18,
-            140, 11, 37, 20, 140, 11);
+            145, 11, 34, 20, 145, 11);
+        //Barra roja
+        ctx.drawImage(spriteDecoraciones, 16, 4,
+            this.tamanybarra, 11, 34, 20, this.tamanybarra, 11);
         //Numero de personaje
         ctx.drawImage(spriteDecoraciones, 31, 100,
             7, 11, 2, 0, 7, 11);
@@ -241,15 +243,21 @@ let player1 = function (x, y, width, height, img, imgDecoraciones) {
             10, 12, 10, 0, 10, 12);
         //Victoria 1
         ctx.drawImage(spriteDecoraciones, 344, 15,
-            16, 17, 2, 16, 16, 17);
-
+            16, 17, 1, 16, 16, 17);
         //Victoria 2
         ctx.drawImage(spriteDecoraciones, 344, 15,
-            16, 17, 20, 16, 16, 17);
-
+            16, 17, 18, 16, 16, 17);
         //Nombre
         ctx.drawImage(spriteDecoraciones, 16, 71,
             63, 10, 40, 35, 63, 10);
+
+    }
+
+    this.quitarVida = function (mal) {
+        if (this.tamanybarra < 145) {
+            this.tamanybarra = this.tamanybarra + mal;
+        }
+        this.dibujarObjetos();
     }
 
 }
@@ -269,8 +277,7 @@ let player2 = function (x, y, width, height, img, imgDecoraciones) {
 
     this.frameDelay = 5;
     this.frameContador = 0;
-
-
+    this.tamanybarra = 145;
 
     this.dibuja = function () {
         let sprite = new Image();
@@ -353,20 +360,22 @@ let player2 = function (x, y, width, height, img, imgDecoraciones) {
         this.height = this.height / 2;
         this.y = this.y + this.height;
         this.dibuja();
+        this.dibujarObjetos();
     }
 
     this.levantarse = function () {
-        this.height = this.height;
-        this.y = canvas.height - this.height;
-        this.dibuja();
+        this.animacion();
     }
 
     this.dibujarObjetos = function () {
         let spriteDecoraciones = new Image();
         spriteDecoraciones.src = this.imgDecoraciones;
+        //Barra roja
+        ctx.drawImage(spriteDecoraciones, 193, 4,
+            145, 11, 205, 20, 145, 11);
         //Barra
         ctx.drawImage(spriteDecoraciones, 193, 18,
-            145, 11, 208, 20, 140, 11);
+            this.tamanybarra, 11, 205, 20, this.tamanybarra, 11);
         //Numero de personaje    
         ctx.drawImage(spriteDecoraciones, 41, 100,
             10, 12, 362, 0, 10, 12);
@@ -374,7 +383,7 @@ let player2 = function (x, y, width, height, img, imgDecoraciones) {
             10, 12, 373, 0, 10, 12);
         //Victoria 1
         ctx.drawImage(spriteDecoraciones, 344, 15,
-            16, 17, 349, 16, 16, 17);
+            16, 17, 350, 16, 16, 17);
         //Victoria 2
         ctx.drawImage(spriteDecoraciones, 344, 15,
             16, 17, 367, 16, 16, 17);
@@ -382,6 +391,14 @@ let player2 = function (x, y, width, height, img, imgDecoraciones) {
         ctx.drawImage(spriteDecoraciones, 290, 71,
             45, 10, 305, 35, 45, 10);
 
+
+    }
+
+    this.quitarVida = function (mal) {
+        if (this.tamanybarra <= 145 && this.tamanybarra > 0) {
+            this.tamanybarra = this.tamanybarra - mal;
+        }
+        this.dibujarObjetos();
     }
 }
 
@@ -418,6 +435,12 @@ document.addEventListener('keydown', (e) => {
             break;
         case "d":
             zangif.derecha();
+            break;
+        case "z":
+            zangif.quitarVida(10);
+            break;
+        case "b":
+            bison.quitarVida(10);
             break;
         default:
             break;
@@ -478,7 +501,7 @@ let stage = function (x, y, width, height, img, imgDecoraciones) {
         spriteDecoraciones.src = this.imgDecoraciones;
         //Ko
         ctx.drawImage(spriteDecoraciones, 161, 16,
-            32, 14, 176, 18, 32, 14);
+            32, 14, 173, 18, 32, 14);
 
     }
 
@@ -499,7 +522,6 @@ function principal() {
     borrarCanvas();
     mostrarContador('img/decoraciones.png');
     escena_bison.dibuja();
-    escena_bison.dibujarObjetos();
     escena_bison.animacion();
     bison.dibuja();
     bison.dibujarObjetos();
@@ -508,6 +530,8 @@ function principal() {
     zangif.dibuja();
     zangif.animacion();
     zangif.dibujarObjetos();
+    escena_bison.dibujarObjetos();
+
     // zangif.descender();
     interval = requestAnimationFrame(principal);
 }
