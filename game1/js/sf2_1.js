@@ -5,6 +5,10 @@ let segundo_10s = 9;
 let contadorFrames = 0;
 let spritX_1rcontador = 158;
 let spritX_2ocontador = 158;
+let esPrimeraMuerte1p = false;
+let esSegundaMuerte1p = false;
+let esPrimeraMuerte2p = false;
+let esSegundaMuerte2p = false;
 document.addEventListener('DOMContentLoaded', inicio);
 
 
@@ -97,7 +101,6 @@ function mostrarContador(imgDecoraciones) {
                     spritX_2ocontador = 142;
                     break;
                 case 9:
-                    console.log("Hola");
                     spritX_2ocontador = 158;
                     break;
                 default:
@@ -240,12 +243,20 @@ let player1 = function (x, y, width, height, img, imgDecoraciones) {
             7, 11, 2, 0, 7, 11);
         ctx.drawImage(spriteDecoraciones, 17, 124,
             10, 12, 10, 0, 10, 12);
-        //Victoria 1
-        ctx.drawImage(spriteDecoraciones, 344, 15,
-            16, 17, 1, 16, 16, 17);
-        //Victoria 2
-        ctx.drawImage(spriteDecoraciones, 344, 15,
-            16, 17, 18, 16, 16, 17);
+
+        if (esPrimeraMuerte2p) {
+            //Victoria 2
+            ctx.drawImage(spriteDecoraciones, 344, 15,
+                16, 17, 18, 16, 16, 17);
+
+        }
+        if (esSegundaMuerte2p) {
+            //Victoria 1
+            ctx.drawImage(spriteDecoraciones, 344, 15,
+                16, 17, 1, 16, 16, 17);
+        }
+
+
         //Nombre
         ctx.drawImage(spriteDecoraciones, 16, 71,
             63, 10, 40, 35, 63, 10);
@@ -378,12 +389,18 @@ let player2 = function (x, y, width, height, img, imgDecoraciones) {
             10, 12, 362, 0, 10, 12);
         ctx.drawImage(spriteDecoraciones, 17, 124,
             10, 12, 373, 0, 10, 12);
-        //Victoria 1
-        ctx.drawImage(spriteDecoraciones, 344, 15,
-            16, 17, 350, 16, 16, 17);
-        //Victoria 2
-        ctx.drawImage(spriteDecoraciones, 344, 15,
-            16, 17, 367, 16, 16, 17);
+        if (esPrimeraMuerte1p) {
+            //Victoria 1
+            ctx.drawImage(spriteDecoraciones, 344, 15,
+                16, 17, 350, 16, 16, 17);
+
+        }
+        if (esSegundaMuerte1p) {
+            // //Victoria 2
+            ctx.drawImage(spriteDecoraciones, 344, 15,
+                16, 17, 367, 16, 16, 17);
+        }
+
         //nombre
         ctx.drawImage(spriteDecoraciones, 290, 71,
             61, 10, 305, 35, 61, 10);
@@ -494,8 +511,6 @@ let stage = function (x, y, width, height, img, imgDecoraciones) {
     let spriteDecoraciones = new Image();
     spriteDecoraciones.src = this.imgDecoraciones;
     this.dibujarObjetos = function () {
-        console.log(bison.tamanybarra);
-        console.log(zangif.tamanybarra);
         if (zangif.tamanybarra >= 145 && bison.tamanybarra <= 0) {
             //Ko
             ctx.drawImage(spriteDecoraciones, 161, 1,
@@ -506,10 +521,12 @@ let stage = function (x, y, width, height, img, imgDecoraciones) {
                 32, 14, 173, 18, 32, 14);
         }
 
+        if (segundo_10s <= 0 && segundo_1s <= 0) {
+            //TIME OVER
+            ctx.drawImage(spriteDecoraciones, 352, 112,
+                64, 30, 160, 80, 64, 30);
 
-        //TIME OVER
-        ctx.drawImage(spriteDecoraciones, 352, 112,
-            64, 30, 160, 80, 64, 30);
+        }
 
     }
 
@@ -539,10 +556,30 @@ function principal() {
     zangif.animacion();
     zangif.dibujarObjetos();
     escena_bison.dibujarObjetos();
-
+    muerte();
     // zangif.descender();
     interval = requestAnimationFrame(principal);
 }
+
+
+function muerte() {
+    if (zangif.tamanybarra >= 145) {
+        zangif.tamanybarra = 0;
+        if (esPrimeraMuerte1p) {
+            esSegundaMuerte1p = true;
+        }
+        esPrimeraMuerte1p = true;
+    }
+
+    if (bison.tamanybarra <= 0) {
+        bison.tamanybarra = 145;
+        if (esPrimeraMuerte2p) {
+            esSegundaMuerte2p = true;
+        }
+        esPrimeraMuerte2p = true;
+    }
+}
+
 
 function borrarCanvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
