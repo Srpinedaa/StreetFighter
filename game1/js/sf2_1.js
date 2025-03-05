@@ -114,7 +114,6 @@ function mostrarContador(imgDecoraciones) {
         }
     }
 
-
     ctx.drawImage(spriteDecoraciones, spritX_1rcontador, 32,
         14, 15, 173, 34, 14, 15);
     ctx.drawImage(spriteDecoraciones, spritX_2ocontador, 32,
@@ -136,15 +135,13 @@ let player1 = function (x, y, width, height, img, imgDecoraciones) {
     this.frameDelay = 5;
     this.frameContador = 0;
     this.tamanybarra = 0;
+    let sprite = new Image();
+    sprite.src = this.img;
 
 
     this.dibuja = function () {
-        let sprite = new Image();
-        sprite.src = this.img;
-
         ctx.drawImage(sprite, this.sprite_x, this.sprite_y,
             this.sprite_w, this.sprite_h, this.x, this.y, this.width, this.height);
-
     }
 
     this.mover = function (jugador) {
@@ -227,9 +224,11 @@ let player1 = function (x, y, width, height, img, imgDecoraciones) {
         this.dibuja();
     }
 
+    let spriteDecoraciones = new Image();
+    spriteDecoraciones.src = this.imgDecoraciones;
+
     this.dibujarObjetos = function () {
-        let spriteDecoraciones = new Image();
-        spriteDecoraciones.src = this.imgDecoraciones;
+
         //Barra
         ctx.drawImage(spriteDecoraciones, 16, 18,
             145, 11, 34, 20, 145, 11);
@@ -278,11 +277,10 @@ let player2 = function (x, y, width, height, img, imgDecoraciones) {
     this.frameDelay = 5;
     this.frameContador = 0;
     this.tamanybarra = 145;
+    let sprite = new Image();
+    sprite.src = this.img;
 
     this.dibuja = function () {
-        let sprite = new Image();
-        sprite.src = this.img;
-
         ctx.drawImage(sprite, this.sprite_x, this.sprite_y,
             this.sprite_w, this.sprite_h, this.x, this.y, this.width, this.height);
 
@@ -366,10 +364,9 @@ let player2 = function (x, y, width, height, img, imgDecoraciones) {
     this.levantarse = function () {
         this.animacion();
     }
-
+    let spriteDecoraciones = new Image();
+    spriteDecoraciones.src = this.imgDecoraciones;
     this.dibujarObjetos = function () {
-        let spriteDecoraciones = new Image();
-        spriteDecoraciones.src = this.imgDecoraciones;
         //Barra roja
         ctx.drawImage(spriteDecoraciones, 193, 4,
             145, 11, 205, 20, 145, 11);
@@ -389,8 +386,7 @@ let player2 = function (x, y, width, height, img, imgDecoraciones) {
             16, 17, 367, 16, 16, 17);
         //nombre
         ctx.drawImage(spriteDecoraciones, 290, 71,
-            45, 10, 305, 35, 45, 10);
-
+            61, 10, 305, 35, 61, 10);
 
     }
 
@@ -495,13 +491,25 @@ let stage = function (x, y, width, height, img, imgDecoraciones) {
         mostrarContador('img/decoraciones.png');
         // interval_player = requestAnimationFrame(this.animacion.bind(this));
     }
-
+    let spriteDecoraciones = new Image();
+    spriteDecoraciones.src = this.imgDecoraciones;
     this.dibujarObjetos = function () {
-        let spriteDecoraciones = new Image();
-        spriteDecoraciones.src = this.imgDecoraciones;
-        //Ko
-        ctx.drawImage(spriteDecoraciones, 161, 16,
-            32, 14, 173, 18, 32, 14);
+        console.log(bison.tamanybarra);
+        console.log(zangif.tamanybarra);
+        if (zangif.tamanybarra >= 145 && bison.tamanybarra <= 0) {
+            //Ko
+            ctx.drawImage(spriteDecoraciones, 161, 1,
+                32, 14, 173, 18, 32, 14);
+        } else {
+            //Ko
+            ctx.drawImage(spriteDecoraciones, 161, 16,
+                32, 14, 173, 18, 32, 14);
+        }
+
+
+        //TIME OVER
+        ctx.drawImage(spriteDecoraciones, 352, 112,
+            64, 30, 160, 80, 64, 30);
 
     }
 
