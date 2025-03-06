@@ -14,3 +14,31 @@ let bisonAgachado = [
     { x: 716, y: 37, width: 103, height: 90 },
     { x: 830, y: 56, width: 104, height: 71 },
 ]
+
+let bisonVictory = [
+    { x: 121, y: 1006, width: 80, height: 101 },
+    { x: 121, y: 1006, width: 80, height: 101 },
+    { x: 121, y: 1006, width: 80, height: 101 },
+    { x: 214, y: 998, width: 59, height: 110 },
+    { x: 214, y: 998, width: 59, height: 110 },
+    { x: 214, y: 998, width: 59, height: 110 },
+]
+
+let bisonVictoryAlternate = [
+    { x: 285, y: 1010, width: 105, height: 100 },
+    { x: 285, y: 1010, width: 105, height: 100 },
+    { x: 285, y: 1010, width: 105, height: 100 },
+    { x: 398, y: 1009, width: 105, height: 100 },
+    { x: 398, y: 1009, width: 105, height: 100 },
+    { x: 398, y: 1009, width: 105, height: 100 },
+    { x: 510, y: 1008, width: 106, height: 100 },
+    { x: 510, y: 1008, width: 106, height: 100 },
+    { x: 510, y: 1008, width: 106, height: 100 },
+    { x: 623, y: 1007, width: 105, height: 100 },
+    { x: 623, y: 1007, width: 105, height: 100 },
+    { x: 623, y: 1007, width: 105, height: 100 },
+    { x: 737, y: 1007, width: 106, height: 100 },
+    { x: 737, y: 1007, width: 106, height: 100 },
+    { x: 737, y: 1007, width: 106, height: 100 }
+]
+

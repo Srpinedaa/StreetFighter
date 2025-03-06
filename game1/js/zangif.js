@@ -1,12 +1,42 @@
-let zangifReady = [
+let ZangifReady = [
     { x: 26, y: 390, width: 103, height: 110 },
     { x: 155, y: 390, width: 94, height: 110 },
     { x: 282, y: 390, width: 90, height: 110 },
     { x: 412, y: 390, width: 92, height: 110 },
 ]
 
-let zangifAgachado = [
+let ZangifAgachado = [
     { x: 29, y: 918, width: 108, height: 103 },
     { x: 150, y: 934, width: 96, height: 87 },
     { x: 257, y: 941, width: 91, height: 80 },
+]
+
+let ZangiefVictory = [
+    { x: 22, y: 7690, width: 94, height: 115 },
+    { x: 22, y: 7690, width: 94, height: 115 },
+    { x: 22, y: 7690, width: 94, height: 115 },
+    { x: 139, y: 7689, width: 97, height: 116 },
+    { x: 139, y: 7689, width: 97, height: 116 },
+    { x: 253, y: 7689, width: 93, height: 114 },
+    { x: 365, y: 7691, width: 93, height: 114 },
+    { x: 365, y: 7691, width: 93, height: 114 },
+    { x: 365, y: 7691, width: 93, height: 114 },
+    { x: 470, y: 7690, width: 89, height: 114 },
+    { x: 470, y: 7690, width: 89, height: 114 },
+    { x: 470, y: 7690, width: 89, height: 114 },
+    { x: 577, y: 7691, width: 96, height: 114 },
+    { x: 577, y: 7691, width: 96, height: 114 },
+    { x: 577, y: 7691, width: 96, height: 114 }
+]
+
+let ZangiefVictoryAlternate = [
+    { x: 27, y: 7863, width: 93, height: 114 },
+    { x: 27, y: 7863, width: 93, height: 114 },
+    { x: 27, y: 7863, width: 93, height: 114 },
+    { x: 131, y: 7856, width: 96, height: 121 },
+    { x: 131, y: 7856, width: 96, height: 121 },
+    { x: 131, y: 7856, width: 96, height: 121 },
+    { x: 253, y: 7821, width: 94, height: 156 },
+    { x: 253, y: 7821, width: 94, height: 156 },
+    { x: 253, y: 7821, width: 94, height: 156 }
 ]
