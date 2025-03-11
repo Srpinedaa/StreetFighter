@@ -19,9 +19,27 @@ let bisonVictory = [
     { x: 121, y: 1006, width: 80, height: 101 },
     { x: 121, y: 1006, width: 80, height: 101 },
     { x: 121, y: 1006, width: 80, height: 101 },
+    { x: 121, y: 1006, width: 80, height: 101 },
+    { x: 121, y: 1006, width: 80, height: 101 },
+    { x: 121, y: 1006, width: 80, height: 101 },
+    { x: 121, y: 1006, width: 80, height: 101 },
+    { x: 121, y: 1006, width: 80, height: 101 },
+    { x: 121, y: 1006, width: 80, height: 101 },
+    { x: 121, y: 1006, width: 80, height: 101 },
+    { x: 121, y: 1006, width: 80, height: 101 },
+    { x: 121, y: 1006, width: 80, height: 101 },
     { x: 214, y: 998, width: 59, height: 110 },
     { x: 214, y: 998, width: 59, height: 110 },
     { x: 214, y: 998, width: 59, height: 110 },
+    { x: 214, y: 998, width: 59, height: 110 },
+    { x: 214, y: 998, width: 59, height: 110 },
+    { x: 214, y: 998, width: 59, height: 110 },
+    { x: 214, y: 998, width: 59, height: 110 },
+    { x: 214, y: 998, width: 59, height: 110 },
+    { x: 214, y: 998, width: 59, height: 110 },
+    { x: 214, y: 998, width: 59, height: 110 },
+    { x: 214, y: 998, width: 59, height: 110 },
+    { x: 214, y: 998, width: 59, height: 110 }
 ]
 
 let bisonVictoryAlternate = [

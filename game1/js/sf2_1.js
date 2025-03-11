@@ -10,6 +10,7 @@ let esSegundaMuerte1p = false;
 let esPrimeraMuerte2p = false;
 let esSegundaMuerte2p = false;
 let gameOver = false;
+let paraContador = false;
 let spriteDecoraciones = new Image();
 spriteDecoraciones.src = 'img/decoraciones.png';
 document.addEventListener('DOMContentLoaded', inicio);
@@ -22,102 +23,104 @@ function mostrarContador() {
 
     canvas = document.getElementById('canvas');
     ctx = canvas.getContext('2d');
+    if (!paraContador) {
+        //10 segundos
+        if (contadorFrames % 1200 === 0) {
+            segundo_10s--;
+            if (segundo_10s >= -1) {
+                switch (segundo_10s) {
+                    case 0:
+                        spritX_1rcontador = 15;
+                        break
+                        ;
+                    case 1:
+                        spritX_1rcontador = 31;
+                        break;
+                    case 2:
+                        spritX_1rcontador = 47;
+                        break;
+                    case 3:
+                        spritX_1rcontador = 63;
+                        break;
+                    case 4:
+                        spritX_1rcontador = 79;
+                        break;
+                    case 5:
+                        spritX_1rcontador = 94;
+                        break;
+                    case 6:
+                        spritX_1rcontador = 111;
+                        break;
+                    case 7:
+                        spritX_1rcontador = 127;
+                        break;
+                    case 8:
+                        spritX_1rcontador = 142;
+                        break;
+                    case 9:
+                        spritX_1rcontador = 158;
+                        break;
+                    default:
+                        spritX_1rcontador = 15;
+                        break;
 
-    //10 segundos
-    if (contadorFrames % 1200 === 0) {
-        segundo_10s--;
-        if (segundo_10s >= -1) {
-            switch (segundo_10s) {
-                case 0:
-                    spritX_1rcontador = 15;
-                    break
-                    ;
-                case 1:
-                    spritX_1rcontador = 31;
-                    break;
-                case 2:
-                    spritX_1rcontador = 47;
-                    break;
-                case 3:
-                    spritX_1rcontador = 63;
-                    break;
-                case 4:
-                    spritX_1rcontador = 79;
-                    break;
-                case 5:
-                    spritX_1rcontador = 94;
-                    break;
-                case 6:
-                    spritX_1rcontador = 111;
-                    break;
-                case 7:
-                    spritX_1rcontador = 127;
-                    break;
-                case 8:
-                    spritX_1rcontador = 142;
-                    break;
-                case 9:
-                    spritX_1rcontador = 158;
-                    break;
-                default:
-                    spritX_1rcontador = 15;
-                    break;
+                }
 
-            }
-
-        } else {
-            return;
-        }
-    }
-    // Un segundo
-    if (contadorFrames % 120 === 0) {
-        segundo_1s--;
-        if (segundo_1s >= 0) {
-            switch (segundo_1s) {
-                case 0:
-                    spritX_2ocontador = 15;
-                    break
-                    ;
-                case 1:
-                    spritX_2ocontador = 31;
-                    break;
-                case 2:
-                    spritX_2ocontador = 47;
-                    break;
-                case 3:
-                    spritX_2ocontador = 63;
-                    break;
-                case 4:
-                    spritX_2ocontador = 79;
-                    break;
-                case 5:
-                    spritX_2ocontador = 94;
-                    break;
-                case 6:
-                    spritX_2ocontador = 111;
-                    break;
-                case 7:
-                    spritX_2ocontador = 127;
-                    break;
-                case 8:
-                    spritX_2ocontador = 142;
-                    break;
-                case 9:
-                    spritX_2ocontador = 158;
-                    break;
-                default:
-                    break;
-
-            }
-
-        } else {
-            if (segundo_10s <= -1) {
+            } else {
                 return;
             }
-            spritX_2ocontador = 158;
-            segundo_1s = 9;
+        }
+        // Un segundo
+        if (contadorFrames % 120 === 0) {
+            segundo_1s--;
+            if (segundo_1s >= 0) {
+                switch (segundo_1s) {
+                    case 0:
+                        spritX_2ocontador = 15;
+                        break
+                        ;
+                    case 1:
+                        spritX_2ocontador = 31;
+                        break;
+                    case 2:
+                        spritX_2ocontador = 47;
+                        break;
+                    case 3:
+                        spritX_2ocontador = 63;
+                        break;
+                    case 4:
+                        spritX_2ocontador = 79;
+                        break;
+                    case 5:
+                        spritX_2ocontador = 94;
+                        break;
+                    case 6:
+                        spritX_2ocontador = 111;
+                        break;
+                    case 7:
+                        spritX_2ocontador = 127;
+                        break;
+                    case 8:
+                        spritX_2ocontador = 142;
+                        break;
+                    case 9:
+                        spritX_2ocontador = 158;
+                        break;
+                    default:
+                        break;
+
+                }
+
+            } else {
+                if (segundo_10s <= -1) {
+                    return;
+                }
+                spritX_2ocontador = 158;
+                segundo_1s = 9;
+            }
         }
     }
+
 
     ctx.drawImage(spriteDecoraciones, spritX_1rcontador, 32,
         14, 15, 173, 34, 14, 15);
@@ -251,9 +254,8 @@ let Player1 = function (x, y, width, height, img, imgDecoraciones) {
 
     let spriteDecoraciones = new Image();
     spriteDecoraciones.src = this.imgDecoraciones;
-
+    let victoriaPersonaje = false;
     this.dibujarObjetos = function () {
-
         //Barra
         ctx.drawImage(spriteDecoraciones, 16, 18,
             145, 11, 34, 20, 145, 11);
@@ -271,12 +273,19 @@ let Player1 = function (x, y, width, height, img, imgDecoraciones) {
             ctx.drawImage(spriteDecoraciones, 344, 15,
                 16, 17, 18, 16, 16, 17);
             // this.animacion(zangiefVictory);
+            victoriaPersonaje = true;
 
         }
         if (esSegundaMuerte2p) {
             //Victoria 1
             ctx.drawImage(spriteDecoraciones, 344, 15,
                 16, 17, 1, 16, 16, 17);
+            victoriaPersonaje = true;
+
+            // this.animacion(zangiefVictoryAlternate);
+        }
+
+        if (victoriaPersonaje) {
             //Nombre
             ctx.drawImage(spriteDecoraciones, 16, 71,
                 63, 10, 150, 80, 63, 10);
@@ -292,12 +301,7 @@ let Player1 = function (x, y, width, height, img, imgDecoraciones) {
             //S
             ctx.drawImage(spriteDecoraciones, 53, 125,
                 10, 10, 243, 80, 10, 10);
-            // this.animacion(zangiefVictoryAlternate);
-
-
         }
-
-
         //Nombre
         ctx.drawImage(spriteDecoraciones, 16, 71,
             63, 10, 40, 35, 63, 10);
@@ -433,6 +437,7 @@ let player2 = function (x, y, width, height, img, imgDecoraciones) {
     }
     let spriteDecoraciones = new Image();
     spriteDecoraciones.src = this.imgDecoraciones;
+    let victoriaPersonaje = false;
     this.dibujarObjetos = function () {
         //Barra roja
         ctx.drawImage(spriteDecoraciones, 193, 4,
@@ -449,13 +454,19 @@ let player2 = function (x, y, width, height, img, imgDecoraciones) {
             //Victoria 1
             ctx.drawImage(spriteDecoraciones, 344, 15,
                 16, 17, 350, 16, 16, 17);
-
+            victoriaPersonaje = true;
             // this.animacion(bisonVictory);
         }
         if (esSegundaMuerte1p) {
             // //Victoria 2
             ctx.drawImage(spriteDecoraciones, 344, 15,
                 16, 17, 367, 16, 16, 17);
+            victoriaPersonaje = true;
+
+            // this.animacion(bisonVictoryAlternate);
+
+        }
+        if (victoriaPersonaje) {
             //Nombre
             ctx.drawImage(spriteDecoraciones, 290, 71,
                 61, 10, 150, 80, 61, 10);
@@ -471,10 +482,7 @@ let player2 = function (x, y, width, height, img, imgDecoraciones) {
             //S
             ctx.drawImage(spriteDecoraciones, 53, 125,
                 10, 10, 230, 80, 10, 10);
-            // this.animacion(bisonVictoryAlternate);
-
         }
-
         //nombre
         ctx.drawImage(spriteDecoraciones, 290, 71,
             61, 10, 305, 35, 61, 10);
@@ -528,6 +536,11 @@ document.addEventListener('keydown', (e) => {
             break;
         case "b":
             Bison.quitarVida(10);
+            break;
+        case "e":
+            break;
+        case "p":
+
             break;
         default:
             break;
@@ -627,29 +640,42 @@ function principal() {
     Bison.dibujarObjetos();
     let animacion1p = "";
     if (esPrimeraMuerte1p) {
-        Bison.victoriaP2(bisonVictory);
+        animacion1p = bisonVictory;
+        Bison.x = 280;
     } else {
         animacion1p = bisonReady;
         Bison.animacion(animacion1p);
     }
     if (esSegundaMuerte1p) {
-        Bison.victoriaP2(bisonVictoryAlternate);
+        animacion1p = bisonVictoryAlternate;
+        Bison.x = 250;
+    }
+    if (esPrimeraMuerte1p == true || esSegundaMuerte1p == true) {
+        Bison.victoriaP2(animacion1p);
+        paraContador = true;
     }
 
     // Bison.descender();
     Zangif.dibuja();
+    Zangif.dibujarObjetos();
+
     let animacion2p = "";
     if (esPrimeraMuerte2p) {
         animacion2p = ZangiefVictory;
-        Zangif.victoriaP1(ZangiefVictory);
+        paraContador = true;
+
     } else {
         Zangif.animacion(ZangifReady);
     }
     if (esSegundaMuerte2p) {
-        Zangif.victoriaP1(ZangiefVictoryAlternate);
+        animacion2p = ZangiefVictoryAlternate;
+        Zangif.y = 50;
+        paraContador = true;
     }
-
-    Zangif.dibujarObjetos();
+    if (esPrimeraMuerte2p == true || esSegundaMuerte2p == true) {
+        Zangif.victoriaP1(animacion2p);
+        paraContador = true;
+    }
     escena_bison.dibujarObjetos();
 
 
@@ -663,16 +689,20 @@ function principal() {
 
 function muerte() {
     if (Zangif.tamanybarra >= 145) {
+        // setInterval(() => {
         Zangif.tamanybarra = 0;
+        // }, 2000);
+
         if (esPrimeraMuerte1p) {
             esSegundaMuerte1p = true;
         }
         esPrimeraMuerte1p = true;
 
     }
-
     if (Bison.tamanybarra <= 0) {
+        // setInterval(() => {
         Bison.tamanybarra = 145;
+        // }, 2000);
         if (esPrimeraMuerte2p) {
             esSegundaMuerte2p = true;
         }

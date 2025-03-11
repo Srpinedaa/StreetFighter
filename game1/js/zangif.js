@@ -1,3 +1,13 @@
+//ANIMACIONS GENERALS
+let escenari = [
+    { x: 0, y: 0, width: 621, height: 224 }, //pos x y + width i height en el sprite 
+    { x: 621, y: 0, width: 621, height: 224 }, //pos x y + width i height en el sprite 
+    { x: 1242, y: 0, width: 621, height: 224 }, //pos x y + width i height en el sprite 
+    { x: 1863, y: 0, width: 621, height: 224 }, //pos x y + width i height en el sprite 
+    { x: 2484, y: 0, width: 621, height: 224 }, //pos x y + width i height en el sprite 
+
+]
+
 let ZangifReady = [
     { x: 26, y: 390, width: 103, height: 110 },
     { x: 155, y: 390, width: 94, height: 110 },
@@ -33,9 +43,12 @@ let ZangiefVictoryAlternate = [
     { x: 27, y: 7863, width: 93, height: 114 },
     { x: 27, y: 7863, width: 93, height: 114 },
     { x: 27, y: 7863, width: 93, height: 114 },
+    { x: 27, y: 7863, width: 93, height: 114 },
     { x: 131, y: 7856, width: 96, height: 121 },
     { x: 131, y: 7856, width: 96, height: 121 },
     { x: 131, y: 7856, width: 96, height: 121 },
+    { x: 131, y: 7856, width: 96, height: 121 },
+    { x: 253, y: 7821, width: 94, height: 156 },
     { x: 253, y: 7821, width: 94, height: 156 },
     { x: 253, y: 7821, width: 94, height: 156 },
     { x: 253, y: 7821, width: 94, height: 156 }
